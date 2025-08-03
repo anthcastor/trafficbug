@@ -2,20 +2,17 @@ package com.trafficbug.service;
 
 import com.azure.data.tables.*;
 import com.azure.data.tables.models.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 @Service
 public class DeviceTokenService
 {
-
         private final TableClient tableClient;
 
-        public DeviceTokenService() {
-            String connectionString = "***REMOVED***";
-
-            TableServiceClient serviceClient = new TableServiceClientBuilder()
-                    .connectionString(connectionString)
-                    .buildClient();
-
+    public DeviceTokenService(@Value("${azure.table.connection-string}") String connectionString) {
+        TableServiceClient serviceClient = new TableServiceClientBuilder()
+                .connectionString(connectionString)
+                .buildClient();
             this.tableClient = serviceClient.getTableClient("DeviceTokens");
         }
 
