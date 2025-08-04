@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/alert")
+@RequestMapping("/alert")
 public class AlertController {
     private final PushAlertService pushAlertService;
 
